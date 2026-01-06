@@ -1,0 +1,7 @@
+{
+  "name": "Copy of NCD EarlyDetect Uganda",
+  "description": "A production-ready medical AI platform for early detection of Non-Communicable Diseases, featuring role-based access, image segmentation, and AI-assisted diagnostics.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
