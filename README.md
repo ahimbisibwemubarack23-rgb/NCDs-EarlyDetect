@@ -1,20 +1,35 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
 
-# Run and deploy your AI Studio app
+# NCD EarlyDetect Uganda - Full Stack Deployment
 
-This contains everything you need to run your app locally.
+This platform runs 100% locally. No patient data ever leaves the clinic's local network.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1K07nwu3cg5ZtgPMhvv1BROi4Mka-f6KK
+## Project Structure
+- `backend/`: FastAPI + MONAI AI Processing pipeline.
+- `local_storage/`: Encrypted local folder for clinical records.
+- `frontend/`: React dashboard (handled by index.tsx).
 
-## Run Locally
+## Installation
 
-**Prerequisites:**  Node.js
+### 1. Requirements
+Install the local AI & 3D processing stack:
+```bash
+pip install fastapi uvicorn sqlalchemy torch monai simpleitk vtk numpy opencv-python pyjwt passlib[bcrypt] fpdf
+```
 
+### 2. Run Backend
+From the project root:
+```bash
+python -m backend.main
+```
+The API will be available at `http://localhost:8000`.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### 3. Run Frontend
+Open `index.html` in a local browser or use a dev server:
+```bash
+npm run dev
+```
+
+## Security Implementation
+- **Anonymization**: `backend/utils.py` handles PII removal.
+- **RBAC**: User roles (DOCTOR, ADMIN, etc.) are enforced via JWT.
+- **Privacy**: No external cloud APIs are used for medical analysis.
